@@ -1,3 +1,4 @@
+
 /*
  *    Copyright (c) The League of Amazing Programmers 2013-2018
  *    Level 1
@@ -23,19 +24,23 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
  * 2. Right click your project and add it as an External JAR (Under Java Build Path > Libraries).*/
 
 public class Jukebox implements Runnable, MouseListener {
-	Song wearenumberone;
+	JLabel Song1;
+	Song song;
+    JLabel Song2;
 	public void createUI() {
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		JPanel panel = new JPanel();
 		frame.add(panel);
-		JLabel label = loadImage("robbieRotten.jpg");
-        panel.add(label);
-		label.addMouseListener(null);
-		
-        frame.pack();
- 
+		Song1 = loadImage("robbieRotten.jpg");
+		Song1.addMouseListener(this);
+		panel.add(Song1);
+        Song2 = loadImage("pokemon-pikachu.jpg");
+        Song2.addMouseListener(this);
+        panel.add(Song2);
+		frame.pack();
+
 	}
 
 	public static void main(String[] args) {
@@ -48,11 +53,13 @@ public class Jukebox implements Runnable, MouseListener {
 
 		// 3. Find an mp3 on your computer or on the Internet.
 		// 4. Create a Song
-		 wearenumberone = new Song("weare1.mp3");
+		
 		// 5. Play the Song
-		Song sm64 = new Song("Super Mario 64 - Dire Dire Docks.mp3");
-		Song pokemon = new Song("Pokemon - Black and White Music - Rival Battle.mp3");
-		Song halo = new Song("Halo 2 - Volume 1 - 01 - Halo Theme Mjolnir Mix.mp3");
+		//song.play();
+		// Song sm64 = new Song("Super Mario 64 - Dire Dire Docks.mp3");
+		// Song pokemon = new Song("Pokemon - Black and White Music - Rival
+		// Battle.mp3");
+		// Song halo = new Song("Halo 2 - Volume 1 - 01 - Halo Theme Mjolnir Mix.mp3");
 		/*
 		 * 6. Create a user interface for your Jukebox so that the user can to
 		 * 
@@ -162,30 +169,33 @@ public class Jukebox implements Runnable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		wearenumberone.play();
+		if (arg0.getSource().equals(Song1)) {
+			song = new Song("weare1.mp3");
+			song.play();
+		}
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
